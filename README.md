@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/r-lib/usethis/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/usethis/actions)
+[![R-CMD-check](https://github.com/RafaJPSantos/bagged.outliertrees/workflows/R-CMD-check/badge.svg)](https://github.com/RafaJPSantos/bagged.outliertrees/actions)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/usethis)](https://CRAN.R-project.org/package=usethis)
+status](https://www.r-pkg.org/badges/version/bagged.outliertrees)](https://CRAN.R-project.org/package=bagged.outliertrees)
 <!-- badges: end -->
 
 Bagged OutlierTrees is an explainable unsupervised outlier detection
@@ -15,9 +15,12 @@ method based on an ensemble implementation of the existing OutlierTree
 procedure (Cortes, 2020). This implementation takes advantage of
 bootstrap aggregating (bagging) to improve robustness by reducing the
 possible masking effect and subsequent high variance (similarly to
-Isolation Forest), hence the name “Bagged OutlierTrees”. To learn more
-about the base procedure OutlierTree (Cortes, 2020), please refer to
-&lt;arXiv:2001.00636&gt; (the repository can be found
+Isolation Forest), hence the name “Bagged OutlierTrees”.
+
+To learn more about the base procedure OutlierTree (Cortes, 2020),
+please refer to
+[&lt;arXiv:2001.00636&gt;](https://arxiv.org/abs/2001.00636) (the
+corresponding GitHub repository can be found
 [here](https://github.com/david-cortes/outliertree)). This repository
 and its documentation are heavily based on the latter to ensure
 consistency and ease-of-use between the packages.
@@ -29,6 +32,14 @@ One of the main differences is that it does not support missing values:
 if not taken care of, rows with missing values are automatically removed
 while fitting the model or predicting new data.
 
+Make sure that you have a compatible `outliertree` package version
+(&lt;= 1.2.0) installed:
+
+``` r
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
+```
+
 ## Installation
 
 <!-- You can install the released version of bagged.outliertrees from [CRAN](https://CRAN.R-project.org) with:
@@ -38,19 +49,12 @@ install.packages("bagged.outliertrees")
 ```
 -->
 
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of `bagged.outliertrees` from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("RafaJPSantos/bagged.outliertrees")
-```
-
-Ensure that you have a compatible `outliertree` package version
-installed:
-
-``` r
-packageurl <- "https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
 ```
 
 ## Example
@@ -84,151 +88,58 @@ outliers <- predict(model,
 
 ### print the top-10 outliers in human-readable format
 print(outliers, outliers_print = 10)
-#> Reporting top 10 outliers [out of 27 found]
+#> Reporting top 10 outliers [out of 29 found]
 #> 
-#> row [1138] - suspicious column: [age] - suspicious value: [75]
-#>  distribution: 97.30% <= [34] - [mean: 31.5928] - [sd: 4.5726] - [norm. obs: 27]
-#>      distribution: 97.30% <= [36] - [mean: 31.5928] - [sd: 4.5726] - [norm. obs: 27]
-#>      distribution: 97.30% <= [42] - [mean: 31.5928] - [sd: 4.5726] - [norm. obs: 27]
-#>      [pregnant] = [TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE]
+#> row [1438] - suspicious column: [FTI] - suspicious value: [394.495412844037]
+#>  distribution: 99.92% <= [295.3822] - [mean: 109.9358] - [sd: 31.1643] - [norm. obs: 956]
+#> 
+#> 
+#> row [623] - suspicious column: [age] - suspicious value: [455]
+#>  distribution: 99.92% <= [91.68] - [mean: 53.2459] - [sd: 18.9713] - [norm. obs: 956]
+#> 
+#> 
+#> row [745] - suspicious column: [T4U] - suspicious value: [2.12]
+#>  distribution: 99.89% <= [1.7179] - [mean: 0.9976] - [sd: 0.1524] - [norm. obs: 698]
+#>      [age] > [37.5729] (value: 87)
 #> 
 #> 
 #> row [1157] - suspicious column: [T3] - suspicious value: [7]
-#>  distribution: 99.79% <= [5.4] - [mean: 2.0158] - [sd: 0.7515] - [norm. obs: 955]
+#>  distribution: 99.58% <= [5.4] - [mean: 2.0073] - [sd: 0.763] - [norm. obs: 953]
 #> 
 #> 
-#> row [1390] - suspicious column: [T3] - suspicious value: [6.7]
-#>  distribution: 98.27% <= [3.4] - [mean: 2.5153] - [sd: 0.5957] - [norm. obs: 43]
-#>      distribution: 98.27% <= [3.6] - [mean: 2.5153] - [sd: 0.5957] - [norm. obs: 43]
-#>      distribution: 98.27% <= [3.9] - [mean: 2.5153] - [sd: 0.5957] - [norm. obs: 43]
-#>      distribution: 98.27% <= [4.2] - [mean: 2.5153] - [sd: 0.5957] - [norm. obs: 43]
-#>      distribution: 98.27% <= [4.5] - [mean: 2.5153] - [sd: 0.5957] - [norm. obs: 43]
-#>      distribution: 98.27% <= [5] - [mean: 2.5153] - [sd: 0.5957] - [norm. obs: 43]
-#>      [TT4] > [162, 153, 153, 155, 180] (value: 230)
+#> row [712] - suspicious column: [TSH] - suspicious value: [0.005]
+#>  distribution: 97.55% >= [2.7882] - [mean: 52.8267] - [sd: 48.6107] - [norm. obs: 103]
+#>      [FTI] <= [109.4878] (value: 32.5301204819277)
 #> 
 #> 
 #> row [1425] - suspicious column: [FTI] - suspicious value: [161.290322580645]
-#>  distribution: 98.73% <= [78.5714285714286] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [79.2207792207792] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [79.3103448275862] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [82.3529411764706] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [89.6103896103896] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [91.025641025641] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [98.6486486486486] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [101.351351351351] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [112.5] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [112.962962962963] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [116.923076923077] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [121.666666666667] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [124.242424242424] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [126.086956521739] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [126.5625] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [126.760563380282] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [129.577464788732] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      distribution: 98.73% <= [135.416666666667] - [mean: 69.7839] - [sd: 16.575] - [norm. obs: 98]
-#>      [TT4] <= [89, 131, 89, 123] (value: 50)
+#>  distribution: 99.07% <= [111.3482] - [mean: 69.2496] - [sd: 17.56] - [norm. obs: 100]
+#>      [TT4] <= [101.6962] (value: 50)
 #> 
 #> 
-#> row [1438] - suspicious column: [FTI] - suspicious value: [394.495412844037]
-#>  distribution: 99.94% <= [245.192307692308] - [mean: 110.0413] - [sd: 30.7084] - [norm. obs: 956]
-#>      distribution: 99.94% <= [251.086956521739] - [mean: 110.0413] - [sd: 30.7084] - [norm. obs: 956]
-#>      distribution: 99.94% <= [253.260869565217] - [mean: 110.0413] - [sd: 30.7084] - [norm. obs: 956]
-#>      distribution: 99.94% <= [273.75] - [mean: 110.0413] - [sd: 30.7084] - [norm. obs: 956]
-#>      distribution: 99.94% <= [280.412371134021] - [mean: 110.0413] - [sd: 30.7084] - [norm. obs: 956]
-#>      distribution: 99.94% <= [312.5] - [mean: 110.0413] - [sd: 30.7084] - [norm. obs: 956]
-#> 
-#> 
-#> row [1453] - suspicious column: [FTI] - suspicious value: [204.032258064516]
-#>  distribution: 98.45% <= [127.350427350427] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [138.211382113821] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [139.669421487603] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [140.336134453782] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [147.058823529412] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [147.154471544715] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [148.245614035088] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [151.327433628319] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [154.621848739496] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [154.705882352941] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [160.194174757282] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [160.975609756098] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [161.40350877193] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [165.142857142857] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [170.833333333333] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [172] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      distribution: 98.45% <= [176.146788990826] - [mean: 114.474] - [sd: 15.3982] - [norm. obs: 74]
-#>      [TT4] > [150] (value: 253)
+#> row [2110] - suspicious column: [FTI] - suspicious value: [2.38095238095238]
+#>  distribution: 99.16% >= [49.0236] - [mean: 93.2439] - [sd: 15.851] - [norm. obs: 192]
 #> 
 #> 
 #> row [1513] - suspicious column: [TT4] - suspicious value: [263]
-#>  distribution: 99.20% <= [180] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [182] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [187] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [192] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [198] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [199] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [200] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [203] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [204] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [205] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [206] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [207] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [210] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [211] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      distribution: 99.20% <= [193] - [mean: 132.7703] - [sd: 22.8533] - [norm. obs: 172]
-#>      [TSH] > [0.25, 0.2, 0.2, 0.25, 0.25, 0.23, 0.23] (value: 1.1)
+#>  distribution: 99.30% <= [198.5824] - [mean: 130.5422] - [sd: 22.5466] - [norm. obs: 206]
+#>      [TSH] > [0.3137] (value: 1.1)
 #> 
 #> 
-#> row [1521] - suspicious column: [T4U] - suspicious value: [1.5]
-#>  distribution: 99.41% <= [1.01] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.06] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.08] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.11] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.13] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.14] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.16] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.19] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.2] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.23] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.26] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      distribution: 99.41% <= [1.27] - [mean: 0.9001] - [sd: 0.1016] - [norm. obs: 90]
-#>      [T3] <= [2.8, 2.3] (value: 1.2)
+#> row [66] - suspicious column: [T4U] - suspicious value: [1.75]
+#>  distribution: 98.25% <= [1.2722] - [mean: 0.9643] - [sd: 0.1219] - [norm. obs: 73]
+#>      [FTI] > [139.848] (value: 172)
 #> 
 #> 
-#> row [1530] - suspicious column: [age] - suspicious value: [67]
-#>  distribution: 97.37% <= [39] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [42] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [44] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [53] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [55] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [37] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [38] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      distribution: 97.37% <= [47] - [mean: 30.9586] - [sd: 5.618] - [norm. obs: 33]
-#>      [T4U] > [1.34, 1.31, 1.32, 1.32, 1.34, 1.12, 1.3, 1.32] (value: 1.39)
-#> 
-#> 
-#> row [1546] - suspicious column: [FTI] - suspicious value: [135.416666666667]
-#>  distribution: 98.62% <= [80] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [89.6103896103896] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [91.025641025641] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [93.2432432432432] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [98.6111111111111] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [98.6486486486486] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [98.6666666666667] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [98.75] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [100] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [101.351351351351] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [103.529411764706] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [107.594936708861] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [108.641975308642] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [108.75] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      distribution: 98.62% <= [112.5] - [mean: 74.4996] - [sd: 11.2404] - [norm. obs: 55]
-#>      [TT4] <= [72, 127, 70, 79, 131] (value: 65)
+#> row [1390] - suspicious column: [T3] - suspicious value: [6.7]
+#>  distribution: 97.97% <= [4.0288] - [mean: 2.4517] - [sd: 0.5989] - [norm. obs: 39]
+#>      [TT4] > [141.381] (value: 230)
 ```
 
 # References
 
--   [outliertree GitHub
-    Repository](https://github.com/david-cortes/outliertree)
+-   [outliertree](https://github.com/david-cortes/outliertree)
 -   Cortes, David. “Explainable outlier detection through decision tree
-    conditioning.” arXiv preprint arXiv:2001.00636 (2020).
--   [GritBot software](https://www.rulequest.com/gritbot-info.html) .
+    conditioning.” arXiv preprint
+    [arXiv:2001.00636](https://arxiv.org/abs/2001.00636) (2020).
+-   [GritBot software](https://www.rulequest.com/gritbot-info.html)
