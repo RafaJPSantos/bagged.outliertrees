@@ -1,6 +1,7 @@
 Package: bagged.outliertrees
-Title: Explainable Unsupervised Outlier Detection Method Based on OutlierTree (Cortes, 2020)
-Version: 1.0
+Maintainer: Rafael Santos <rafael.jpsantos@outlook.com>
+Title: Explainable Unsupervised Outlier Detection Method Based on the OutlierTree Procedure (Cortes, 2020)
+Version: 1.0.0
 Authors@R: 
     person(given = "Rafael",
            family = "Santos",

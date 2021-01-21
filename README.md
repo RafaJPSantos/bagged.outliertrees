@@ -27,10 +27,11 @@ consistency and ease-of-use between the packages.
 
 ## Important Note
 
-This package is only compatible with `outliertree` versions &lt;= 1.2.0.
-One of the main differences is that it does not support missing values:
-if not taken care of, rows with missing values are automatically removed
-while fitting the model or predicting on new data.
+At the moment, this package is only compatible with `outliertree`
+versions &lt;= 1.2.0. One of the main differences is that it does not
+support missing values: if not taken care of, rows with missing values
+are automatically removed while fitting the model or predicting on new
+data.
 
 Make sure that you have a compatible `outliertree` package version
 (&lt;= 1.2.0) installed:
@@ -88,28 +89,29 @@ outliers <- predict(model,
 ``` r
 ### print the top-5 outliers in human-readable format
 print(outliers, outliers_print = 5)
-#> Reporting top 5 outliers [out of 30 found]
+#> Reporting top 5 outliers [out of 28 found]
 #> 
 #> row [1438] - suspicious column: [FTI] - suspicious value: [394.495412844037]
-#>  distribution: 99.93% <= [289.9077] - [mean: 109.7389] - [sd: 30.8079] - [norm. obs: 956]
+#>  distribution: 99.93% <= [294.9661] - [mean: 109.855] - [sd: 30.3889] - [norm. obs: 956]
 #> 
 #> 
 #> row [623] - suspicious column: [age] - suspicious value: [455]
-#>  distribution: 99.92% <= [91.83] - [mean: 53.2942] - [sd: 18.9562] - [norm. obs: 956]
+#>  distribution: 99.92% <= [92.03] - [mean: 53.3543] - [sd: 18.9409] - [norm. obs: 956]
 #> 
 #> 
 #> row [745] - suspicious column: [T4U] - suspicious value: [2.12]
-#>  distribution: 99.90% <= [1.7245] - [mean: 0.9975] - [sd: 0.1532] - [norm. obs: 699]
-#>      [age] > [37.6458] (value: 87)
-#> 
-#> 
-#> row [1157] - suspicious column: [T3] - suspicious value: [7]
-#>  distribution: 100.00% <= [5.2] - [mean: 2.0203] - [sd: 0.7006] - [norm. obs: 957]
+#>  distribution: 99.89% <= [1.7222] - [mean: 0.9971] - [sd: 0.1542] - [norm. obs: 700]
+#>      [age] > [37.5859] (value: 87)
 #> 
 #> 
 #> row [1425] - suspicious column: [FTI] - suspicious value: [161.290322580645]
-#>  distribution: 99.28% <= [118.1528] - [mean: 76.8337] - [sd: 15.3916] - [norm. obs: 105]
-#>      [TT4] <= [103.1899] (value: 50)
+#>  distribution: 98.70% <= [104.4645] - [mean: 62.5452] - [sd: 17.6197] - [norm. obs: 89]
+#>      [TT4] <= [99.0122] (value: 50)
+#> 
+#> 
+#> row [2110] - suspicious column: [FTI] - suspicious value: [2.38095238095238]
+#>  distribution: 99.10% >= [49.6384] - [mean: 93.4009] - [sd: 15.6965] - [norm. obs: 188]
+#>      [TT4] <= [112.4091] (value: 2)
 ```
 
 # References
