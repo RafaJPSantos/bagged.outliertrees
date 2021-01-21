@@ -55,7 +55,7 @@ devtools::install_github("RafaJPSantos/bagged.outliertrees")
 
 This is a basic example which shows you how to find outliers in the [hypothyroid dataset](http://archive.ics.uci.edu/ml/datasets/thyroid+disease):
 
-```{r example, echo=FALSE}
+```{r example, results='hide'}
 library(bagged.outliertrees)
 
 ### example dataset with interesting outliers
@@ -78,8 +78,8 @@ outliers <- predict(model,
 ```
 
 ```{r print}
-### print the top-10 outliers in human-readable format
-print(outliers, outliers_print = 10)
+### print the top-5 outliers in human-readable format
+print(outliers, outliers_print = 5)
 ```
 
 
