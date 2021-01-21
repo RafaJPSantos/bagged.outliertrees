@@ -1,16 +1,23 @@
 Package: bagged.outliertrees
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Explainable Unsupervised Outlier Detection Method based on OutlierTree (Cortes, 2020)
+Version: 1.0
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Rafael",
+           family = "Santos",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "rafael.jpsantos@outlook.com")
+Description: Bagged OutlierTrees is an explainable unsupervised outlier detection method based on an ensemble implementation of the existing OutlierTree procedure (Cortes, 2020). This implementation takes advantage of bootstrap aggregating (bagging) to improve robustness by reducing the possible masking effect and subsequent high variance (similarly to Isolation Forest), hence the name "Bagged OutlierTrees". To learn more about the base method OutlierTree (Cortes, 2020), please refer to <arXiv:2001.00636>.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports:
+    outliertree (<= 1.2.0),
+    dplyr,
+    doSNOW,
+    parallel,
+    foreach,
+    rlist,
+    data.table
+Depends: R (>= 3.5.0)
