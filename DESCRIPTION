@@ -21,3 +21,5 @@ Imports:
     rlist,
     data.table
 Depends: R (>= 3.5.0)
+URL: https://github.com/RafaJPSantos/bagged.outliertrees
+BugReports: https://github.com/RafaJPSantos/bagged.outliertrees/issues
