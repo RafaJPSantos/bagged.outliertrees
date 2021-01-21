@@ -67,6 +67,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
+          install.packages("https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz", repos=NULL, type="source")
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
