@@ -1,0 +1,87 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Bagged OutlierTrees
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/r-lib/usethis/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/usethis/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/usethis)](https://CRAN.R-project.org/package=usethis)
+<!-- badges: end -->
+
+Bagged OutlierTrees is an explainable unsupervised outlier detection method based on an ensemble implementation of the existing OutlierTree procedure (Cortes, 2020). This implementation takes advantage of bootstrap aggregating (bagging) to improve robustness by reducing the possible masking effect and subsequent high variance (similarly to Isolation Forest), hence the name "Bagged OutlierTrees". To learn more about the base procedure OutlierTree (Cortes, 2020), please refer to <arXiv:2001.00636> (the repository can be found [here](https://github.com/david-cortes/outliertree)). This repository and its documentation are heavily based on the latter to ensure consistency and ease-of-use between the packages.
+
+## Important Note
+
+This package is only compatible with `outliertree` version <= 1.2.0. One of the main differences is that it does not support missing values: if not taken care of, rows with missing values are automatically removed while fitting the model or predicting new data.
+
+
+## Installation
+
+<!-- You can install the released version of bagged.outliertrees from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("bagged.outliertrees")
+```
+-->
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("RafaJPSantos/bagged.outliertrees")
+```
+
+Ensure that you have a compatible `outliertree` package version installed:
+
+``` r
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
+```
+
+## Example
+
+This is a basic example which shows you how to find outliers in the [hypothyroid dataset](http://archive.ics.uci.edu/ml/datasets/thyroid+disease):
+
+```{r example}
+library(bagged.outliertrees)
+
+### example dataset with interesting outliers
+data(hypothyroid)
+
+### fit a Bagged OutlierTrees model
+model <- bagged.outliertrees(hypothyroid,
+  ntrees = 100,
+  subsampling_rate = 0.75,
+  z_outlier = 5,
+  nthreads = 1
+)
+
+### use the fitted model to find outliers in the training dataset
+outliers <- predict(model,
+  newdata = hypothyroid,
+  min_outlier_score = 0.5,
+  nthreads = 1
+)
+
+### print the top-10 outliers in human-readable format
+print(outliers, outliers_print = 10)
+```
+
+
+# References
+
+* [outliertree GitHub Repository](https://github.com/david-cortes/outliertree)
+* Cortes, David. "Explainable outlier detection through decision tree conditioning." arXiv preprint arXiv:2001.00636 (2020).
+* [GritBot software](https://www.rulequest.com/gritbot-info.html) .

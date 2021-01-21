@@ -6,7 +6,7 @@ Authors@R:
            family = "Santos",
            role = c("aut", "cre"),
            email = "rafael.jpsantos@outlook.com")
-Description: Bagged OutlierTrees is an explainable unsupervised outlier detection method based on an ensemble implementation of the existing OutlierTree procedure (Cortes, 2020). This implementation takes advantage of bootstrap aggregating (bagging) to improve robustness by reducing the possible masking effect and subsequent high variance (similarly to Isolation Forest), hence the name "Bagged OutlierTrees". To learn more about the base method OutlierTree (Cortes, 2020), please refer to <arXiv:2001.00636>.
+Description: Bagged OutlierTrees is an explainable unsupervised outlier detection method based on an ensemble implementation of the existing OutlierTree procedure (Cortes, 2020). This implementation takes advantage of bootstrap aggregating (bagging) to improve robustness by reducing the possible masking effect and subsequent high variance (similarly to Isolation Forest), hence the name "Bagged OutlierTrees". To learn more about the base procedure OutlierTree (Cortes, 2020), please refer to <arXiv:2001.00636>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
