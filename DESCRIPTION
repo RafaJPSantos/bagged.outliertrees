@@ -1,5 +1,5 @@
 Package: bagged.outliertrees
-Title: Explainable Unsupervised Outlier Detection Method based on OutlierTree (Cortes, 2020)
+Title: Explainable Unsupervised Outlier Detection Method Based on OutlierTree (Cortes, 2020)
 Version: 1.0
 Authors@R: 
     person(given = "Rafael",
