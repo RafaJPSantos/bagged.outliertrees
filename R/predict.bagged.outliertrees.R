@@ -75,16 +75,17 @@ predict.bagged.outliertrees <- function(object, newdata, min_outlier_score = 0.9
         predictions_df <- c()
         for (j in names(predictions)) {
           ifelse(length(predictions[[j]]$conditions) > 0,
-                 conditions <- rbindlist(predictions[[j]]$conditions),
+                 conditions <- rbindlist(predictions[[j]]$conditions, fill = TRUE),
                  conditions <- data.table("column" = NA, "value_this" = NA, "comparison" = NA, "value_comp" = NA)
           )
           setnames(
             conditions, c("column", "value_this", "comparison", "value_comp"),
-            c("condition.column", "condition.value_this", "condition.comparison", "condition.value_comp")
+            c("condition.column", "condition.value_this", "condition.comparison", "condition.value_comp"),
+            skip_absent = TRUE
           )
 
           suspicous_value <- rbindlist(list(predictions[[j]]$suspicous_value))
-          setnames(suspicous_value, c("column", "value"), c("suspicious.column", "suspicious.value"))
+          setnames(suspicous_value, c("column", "value"), c("suspicious.column", "suspicious.value"), skip_absent = TRUE)
 
           group_statistics <- rbindlist(list(predictions[[j]]$group_statistics))
           setnames(group_statistics, c("categs_common"), c("statistics.thr"), skip_absent = TRUE)
@@ -118,6 +119,7 @@ predict.bagged.outliertrees <- function(object, newdata, min_outlier_score = 0.9
       }
     )
 
+    bagged_predictions <- bagged_predictions[, -c("decimals")]
 
     bagged_predictions <- bagged_predictions %>%
 
