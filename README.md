@@ -11,13 +11,13 @@ status](https://www.r-pkg.org/badges/version/bagged.outliertrees)](https://CRAN.
 <!-- badges: end -->
 
 Bagged OutlierTrees is an explainable unsupervised outlier detection
-method based on an ensemble implementation of the existing 'OutlierTree'
+method based on an ensemble implementation of the existing OutlierTree
 procedure (Cortes, 2020). This implementation takes advantage of
 bootstrap aggregating (bagging) to improve robustness by reducing the
 possible masking effect and subsequent high variance (similarly to
-Isolation Forest), hence the name 'Bagged OutlierTrees'.
+Isolation Forest), hence the name “Bagged OutlierTrees”.
 
-To learn more about the base procedure 'OutlierTree' (Cortes, 2020),
+To learn more about the base procedure OutlierTree (Cortes, 2020),
 please refer to
 [&lt;arXiv:2001.00636&gt;](https://arxiv.org/abs/2001.00636) (the
 corresponding GitHub repository can be found
@@ -25,6 +25,20 @@ corresponding GitHub repository can be found
 and its documentation are heavily based on the latter to ensure
 consistency and ease-of-use between the packages.
 
+## Important Note
+
+At the moment, this package is only compatible with `outliertree`
+versions &lt;= 1.2.0. One of the main differences is that it does not
+support missing values: if not taken care of, rows with missing values
+are automatically removed while fitting the model or predicting on new
+data.
+
+Make sure that you have a compatible `outliertree` package version
+(&lt;= 1.2.0) installed:
+
+``` r
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
 ```
 
 ## Installation

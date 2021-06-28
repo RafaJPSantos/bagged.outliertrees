@@ -130,7 +130,7 @@ data(hypothyroid)
 
 ### fit a Bagged OutlierTrees model
 model <- bagged.outliertrees(hypothyroid,
-  ntrees = 100,
+  ntrees = 10,
   subsampling_rate = 0.75,
   z_outlier = 5,
   nthreads = 1
