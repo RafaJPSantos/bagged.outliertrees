@@ -25,21 +25,6 @@ corresponding GitHub repository can be found
 and its documentation are heavily based on the latter to ensure
 consistency and ease-of-use between the packages.
 
-## Important Note
-
-At the moment, this package is only compatible with `outliertree`
-versions &lt;= 1.2.0. One of the main differences is that it does not
-support missing values: if not taken care of, rows with missing values
-are automatically removed while fitting the model or predicting on new
-data.
-
-Make sure that you have a compatible `outliertree` package version
-(&lt;= 1.2.0) installed:
-
-``` r
-packageurl <- "https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
-```
 
 ## Installation
 
