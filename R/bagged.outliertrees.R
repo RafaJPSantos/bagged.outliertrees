@@ -93,8 +93,8 @@ NULL
 #' ### fit a Bagged OutlierTrees model
 #' model <- bagged.outliertrees(hypothyroid,
 #'   ntrees = 10,
-#'   subsampling_rate = 0.75,
-#'   z_outlier = 5,
+#'   subsampling_rate = 0.5,
+#'   z_outlier = 6,
 #'   nthreads = 1
 #' )
 #'
