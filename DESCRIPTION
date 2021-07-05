@@ -1,6 +1,6 @@
 Package: bagged.outliertrees
 Maintainer: Rafael Santos <rafael.jpsantos@outlook.com>
-Title: Robust Explainable Outlier Detection based on OutlierTree
+Title: Robust Explainable Outlier Detection Based on OutlierTree
 Version: 1.0.0
 Authors@R: 
     person(given = "Rafael",
