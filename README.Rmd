@@ -26,25 +26,17 @@ To learn more about the base procedure OutlierTree (Cortes, 2020), please refer 
 
 ## Important Note
 
-At the moment, this package is only compatible with `outliertree` versions <= 1.2.0. One of the main differences is that it does not support missing values: if not taken care of, rows with missing values are automatically removed while fitting the model or predicting on new data.
-
-Make sure that you have a compatible `outliertree` package version (<= 1.2.0) installed:
-
-``` r
-packageurl <- "https://cran.r-project.org/src/contrib/Archive/outliertree/outliertree_1.2.0.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
-```
+Bagged OutlierTrees does not support missing values: if not taken care of, rows with missing values are automatically removed while fitting the model or predicting on new data.
 
 ## Installation
 
-<!-- You can install the released version of bagged.outliertrees from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `bagged.outliertrees` from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("bagged.outliertrees")
 ```
--->
 
-You can install the development version of `bagged.outliertrees` from [GitHub](https://github.com/) with:
+Or, install the development version of `bagged.outliertrees` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

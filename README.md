@@ -25,17 +25,22 @@ corresponding GitHub repository can be found
 and its documentation are heavily based on the latter to ensure
 consistency and ease-of-use between the packages.
 
+## Important Note
+
+Bagged OutlierTrees does not support missing values: if not taken care
+of, rows with missing values are automatically removed while fitting the
+model or predicting on new data.
 
 ## Installation
 
-<!-- You can install the released version of bagged.outliertrees from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `bagged.outliertrees` from
+[CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("bagged.outliertrees")
 ```
--->
 
-You can install the development version of `bagged.outliertrees` from
+Or, install the development version of `bagged.outliertrees` from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -77,26 +82,25 @@ print(outliers, outliers_print = 5)
 #> Reporting top 5 outliers [out of 28 found]
 #> 
 #> row [1438] - suspicious column: [FTI] - suspicious value: [394.495412844037]
-#>  distribution: 99.93% <= [294.9661] - [mean: 109.855] - [sd: 30.3889] - [norm. obs: 956]
+#>  distribution: 99.93% <= [292.4685] - [mean: 109.7603] - [sd: 30.5332] - [norm. obs: 956]
 #> 
 #> 
 #> row [623] - suspicious column: [age] - suspicious value: [455]
-#>  distribution: 99.92% <= [92.03] - [mean: 53.3543] - [sd: 18.9409] - [norm. obs: 956]
+#>  distribution: 99.92% <= [91.8] - [mean: 53.2439] - [sd: 18.9342] - [norm. obs: 956]
+#> 
+#> 
+#> row [1157] - suspicious column: [T3] - suspicious value: [7]
+#>  distribution: 99.79% <= [5.4] - [mean: 2.0285] - [sd: 0.7776] - [norm. obs: 955]
 #> 
 #> 
 #> row [745] - suspicious column: [T4U] - suspicious value: [2.12]
-#>  distribution: 99.89% <= [1.7222] - [mean: 0.9971] - [sd: 0.1542] - [norm. obs: 700]
-#>      [age] > [37.5859] (value: 87)
+#>  distribution: 99.91% <= [1.7176] - [mean: 0.9977] - [sd: 0.1511] - [norm. obs: 698]
+#>      [age] > [37.5789] (value: 87)
 #> 
 #> 
 #> row [1425] - suspicious column: [FTI] - suspicious value: [161.290322580645]
-#>  distribution: 98.70% <= [104.4645] - [mean: 62.5452] - [sd: 17.6197] - [norm. obs: 89]
-#>      [TT4] <= [99.0122] (value: 50)
-#> 
-#> 
-#> row [2110] - suspicious column: [FTI] - suspicious value: [2.38095238095238]
-#>  distribution: 99.10% >= [49.6384] - [mean: 93.4009] - [sd: 15.6965] - [norm. obs: 188]
-#>      [TT4] <= [112.4091] (value: 2)
+#>  distribution: 98.99% <= [103.4513] - [mean: 62.781] - [sd: 18.0421] - [norm. obs: 85]
+#>      [TT4] <= [98.6733] (value: 50)
 ```
 
 # References
